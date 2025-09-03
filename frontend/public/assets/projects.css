@@ -1,0 +1,211 @@
+.projects-container {
+    padding: 30px;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f5f7fa;
+    color: #000;
+}
+
+.projects-container h1 {
+    margin-bottom: 20px;
+    font-size: 36px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.feeds-container {
+    display: flex;
+    gap: 20px;
+}
+
+.project-feed {
+    flex: 1;
+    background-color: #f5f7fa;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+
+.feed-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #007acc;
+    color: white;
+    padding: 20px;
+    border-radius: 12px 12px 0 0;
+    font-family: 'Orbitron', sans-serif;
+    gap: 10px;
+}
+
+.feed-title {
+    font-size: 24px;
+    margin: 0;
+}
+
+.feed-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    max-width: 100%;
+}
+
+.search-input {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: none;
+    width: 200px;
+    font-size: 14px;
+}
+
+.filter-button {
+    padding: 8px 12px;
+    background-color: #3399ff;
+    color: white;
+    border: 2px solid black;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.filter-button:hover {
+    background-color: #004080;
+}
+
+
+.scope-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.scope-button {
+    padding: 8px 12px;
+    border: 2px solid black;
+    background-color: #3399ff;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.scope-button:hover {
+    background-color: #004080;
+}
+
+.project-tiles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f0f4f8;
+    border-radius: 0 0 12px 12px;
+}
+
+.project-tile {
+    flex: 1 1 calc(50% - 20px);
+    max-width: calc(50% - 20px);
+    box-sizing: border-box;
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+    overflow: hidden;
+}
+
+.project-tile:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.project-tile-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.project-tile-content {
+    padding: 15px;
+}
+
+.project-tile h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.project-tile p {
+    font-size: 14px;
+    color: #555;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.project-stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #888;
+    margin-top: 10px;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* in /assets/projects.css */
+
+.add-project-button {
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: #007acc;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.add-project-button:hover {
+    background-color: #004080;
+}
+
+.add-project-form {
+    padding: 1rem;
+    margin-bottom: 2rem;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.add-project-form input,
+.add-project-form textarea {
+    width: 100%;
+    margin-top: 4px;
+    margin-bottom: 12px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.submit-button {
+    padding: 10px 20px;
+    background-color: #007acc;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #004080;
+}

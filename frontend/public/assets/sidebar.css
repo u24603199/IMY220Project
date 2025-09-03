@@ -1,0 +1,76 @@
+.app-layout {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    width: 220px;
+    background-color: #003366;
+    color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.sidebar-title {
+    font-size: 24px;
+    margin-bottom: 30px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.nav-link:hover {
+    background-color: #005fa3;
+    border-color: black;
+}
+
+.main-content {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+    background-color: #f5f7fa;
+    color: #000;
+}
+
+body {
+    background: transparent;
+}
+
+.logout-container {
+    margin-top: auto;
+}
+
+.logout-button {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: none;
+    background-color: #003366;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.logout-button:hover {
+    background-color: #005fa3;
+}
