@@ -153,3 +153,15 @@
 .checkout-button:hover {
     background-color: #218838;
 }
+
+.project-message {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-left: 4px solid #007bff;
+    border-radius: 5px;
+}
+.project-message h3 {
+    margin: 0 0 5px 0;
+    color: #333;
+}

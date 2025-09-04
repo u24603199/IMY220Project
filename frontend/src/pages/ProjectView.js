@@ -19,7 +19,8 @@ export default function Projectview() {
         size,
         createdAt = "2025-01-01",
         author = "JACK",
-        files = []
+        message = "No message",
+        files = [],
     } = project;
 
     const [isEditing, setIsEditing] = useState(false);
@@ -62,6 +63,11 @@ export default function Projectview() {
 
                     <div className="project-description">
                         <p>{description}</p>
+                    </div>
+
+                    <div className="project-message">
+                        <h3>Commit Message</h3>
+                        <p>{message}</p>
                     </div>
 
                     <div className="project-stats">

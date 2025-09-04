@@ -3,8 +3,13 @@ import React, { useState } from "react";
 import ProjectTile from "../components/ProjectTile";
 import ProjectData from "../components/ProjectData";
 import UserDetails from "../components/UserDetails";
+import { useParams } from "react-router-dom";
 
 export default function Profile() {
+    const { id } = useParams();
+
+    console.log("Profile id param:", id);
+
     const [projects, setProjects] = useState(ProjectData);
 
     const [isEditing, setIsEditing] = useState(false);
@@ -20,7 +25,7 @@ export default function Profile() {
                     <div className="profile-header">
                         <div className="profile-info-left">
                             <img
-                                src="https://placeholder.com/150"
+                                src="#"
                                 alt="Profile Picture"
                                 className="profile-pic"
                             />
