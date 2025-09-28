@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import authRoutes from "./auth.js"
+import projectRoutes from "./ProjectCRUDRoutes.js";
 
 // CREATE APP
 const app = express();
@@ -9,6 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
+app.use("/api/projects", projectRoutes);
 // SERVE A STATIC PAGE IN THE PUBLIC DIRECTORY
 app.use(express.static("./frontend/public"));
 

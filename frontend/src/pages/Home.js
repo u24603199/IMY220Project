@@ -1,13 +1,3 @@
-// import React from "react";
-// import Sidebar from "../components/SideBar";
-
-// export default function Home(){
-//     return(
-//        <Sidebar>
-//             <h1> Home </h1>
-//         </Sidebar>
-//     );
-// }
 
 import React, { useState } from "react";
 import ProjectTile from "../components/ProjectTile";

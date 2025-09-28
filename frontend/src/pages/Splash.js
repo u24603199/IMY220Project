@@ -1,11 +1,7 @@
 import React from "react";
-import PersonList from "../components/PersonList";
+
 import { Link } from "react-router-dom"
 
-// const initialPeopleList = [
-//     { name: "Troy", surname: "Barnes" },
-//     { name: "Abed", surname: "Nadir" }
-// ];
 
 export default function Splash() {
     return (
@@ -27,6 +23,6 @@ export default function Splash() {
             </div>
         </div>
         </>
-        // <PersonList people={initialPeopleList} /> //Goes within the div
+
     );
 }
