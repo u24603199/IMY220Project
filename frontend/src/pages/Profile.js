@@ -1,20 +1,73 @@
+import React, { useState, useEffect } from "react";
 import Sidebar from "../components/SideBar";
-import React, { useState } from "react";
 import ProjectTile from "../components/ProjectTile";
-import ProjectData from "../components/ProjectData";
 import UserDetails from "../components/UserDetails";
-import { useParams } from "react-router-dom";
 
 export default function Profile() {
-    const { id } = useParams();
-
-    console.log("Profile id param:", id);
-
-    const [projects, setProjects] = useState(ProjectData);
-
+    const [projects, setProjects] = useState([]);
     const [isEditing, setIsEditing] = useState(false);
+    const [userDetails, setUserDetails] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
 
-    const toggleEdit = () => setIsEditing(!isEditing);
+    useEffect(() => {
+        const storedUser = localStorage.getItem("user");
+
+        if (!storedUser) {
+            setError("User not logged in.");
+            setLoading(false);
+            return;
+        }
+
+        const rawUser = JSON.parse(storedUser);
+
+        const normalizedUser = {
+            id: rawUser.id,
+            name: rawUser.username,
+            email: rawUser.email,
+            phone: rawUser.profile?.phone || "",
+            dob: rawUser.profile?.dob || "",
+            bio: rawUser.profile?.bio || "",
+            avatar: rawUser.profile?.avatar,
+            lastLogin: rawUser.lastLogin || "",
+        };
+
+        //console.log(normalizedUser);
+
+        //console.log(JSON.parse(localStorage.getItem("user")))
+
+        setUserDetails(normalizedUser);
+
+        fetch(`api/projects/user/${rawUser.id}/projects`)
+            .then((res) => {
+                if (!res.ok) throw new Error("Failed to load projects.");
+                return res.json();
+            })
+            .then((data) => setProjects(data))
+            .catch((err) => {
+                console.error("Error loading user projects:", err);
+                setError("Error loading user projects.");
+            })
+            .finally(() => setLoading(false));
+    }, []);
+
+    // useEffect(() => {
+    //     if (userDetails) {
+    //         console.log("Avatar URL after update: ", userDetails.avatar);
+    //     }
+    // }, [userDetails]);
+
+    const formatLastLogin = (timestamp) => {
+        if (!timestamp) return "Never";
+
+        const date = new Date(timestamp);
+        return date.toLocaleDateString();
+    };
+
+    const toggleEdit = () => setIsEditing((prev) => !prev);
+
+    if (loading) return <div>Loading profile...</div>;
+    if (error) return <div className="error-message">{error}</div>;
 
     return (
         <>
@@ -25,34 +78,42 @@ export default function Profile() {
                     <div className="profile-header">
                         <div className="profile-info-left">
                             <img
-                                src="#"
-                                alt="Profile Picture"
+                                src={userDetails.avatar}
+                                alt="Profile"
                                 className="profile-pic"
+                                onError={(e) => {
+                                    e.target.src = "/assets/images/Avatars/Logo.png";
+                                }}
                             />
+
                             <div className="profile-stats">
-                                <p>Last online: 5 hours ago</p>
-                                <p>Commits today: 12</p>
+                                <p>Last online: {formatLastLogin(userDetails?.lastLogin)}</p>
                             </div>
                         </div>
+
                         <div className="profile-name">
-                            <h2>User's Name</h2>
+                            <h2>{userDetails?.name || "User's Name"}</h2>
                         </div>
-                        <div className="profile-edit" onClick={toggleEdit} style={{ cursor: "pointer" }}>
+                        <div
+                            className="profile-edit"
+                            onClick={toggleEdit}
+                            style={{ cursor: "pointer" }}
+                        >
                             <p> ✏️ </p>
                         </div>
                     </div>
-
 
                     <div className="profile-details-container">
                         <UserDetails
                             isEditing={isEditing}
                             setIsEditing={setIsEditing}
+                            userDetails={userDetails}
+                            setUserDetails={setUserDetails}
                         />
-
 
                         <div className="project-feed">
                             <div className="feed-header">
-                                <h2 className="feed-title">Associated Projects </h2>
+                                <h2 className="feed-title">Associated Projects</h2>
                                 <div className="feed-controls">
                                     <input
                                         type="text"
@@ -65,7 +126,7 @@ export default function Profile() {
                                 </div>
                             </div>
                             <div className="project-tiles">
-                                {projects.map(project => (
+                                {projects.map((project) => (
                                     <ProjectTile key={project.id} project={project} />
                                 ))}
                             </div>
@@ -73,7 +134,7 @@ export default function Profile() {
                     </div>
                 </div>
             </Sidebar>
-
         </>
     );
+
 }

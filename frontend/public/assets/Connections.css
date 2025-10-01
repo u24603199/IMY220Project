@@ -1,0 +1,39 @@
+.connections-container {
+    padding: 20px;
+}
+
+.user-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.user-card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 200px;
+}
+
+.user-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-info h2 {
+    margin: 10px 0;
+}
+
+.user-info a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.connections-container h1 {
+    margin-bottom: 20px;
+    font-size: 36px;
+    font-family: 'Orbitron', sans-serif;
+}

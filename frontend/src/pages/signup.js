@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 import "../../public/assets/styles.css";
+import { useNavigate } from "react-router-dom";
+
 
 export default function SignUp() {
+
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
         email: "",
+        username: "",
         password: "",
         confirmPassword: "",
     });
@@ -39,6 +45,11 @@ export default function SignUp() {
             newErrors.confirmPassword = "Passwords do not match";
         }
 
+        if (!formData.username) {
+            newErrors.username = "Username is required";
+        }
+
+
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
@@ -56,6 +67,7 @@ export default function SignUp() {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
+                    username: formData.username,
                     email: formData.email,
                     password: formData.password,
                 }),
@@ -66,6 +78,7 @@ export default function SignUp() {
 
             if (res.ok) {
                 setResponseMessage(`Success ${data.message}`);
+                setTimeout(() => navigate("/login"), 1500)
             } else {
                 setResponseMessage(`Failed ${data.message || "Sign up failed."}`);
             }
@@ -83,6 +96,17 @@ export default function SignUp() {
             </div>
             <div className="right-side">
                 <form className="login-signup-form" onSubmit={handleSubmit} noValidate>
+                    <label>Username</label>
+                    <input
+                        type="text"
+                        name="username"
+                        className="input-field"
+                        value={formData.username}
+                        onChange={handleChange}
+                        required
+                    />
+                    {errors.username && <p className="error-text">{errors.username}</p>}
+
                     <label>Email</label>
                     <input
                         type="email"

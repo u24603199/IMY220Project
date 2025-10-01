@@ -8,6 +8,17 @@ export default function ProjectTile({ project }) {
     const handleClick = () => {
         navigate(`/projects/${project.id}`);
     };
+
+    const formatBytes = (bytes) => {
+        if (bytes === 0) return '0 KB';
+        const kb = bytes / 1024;
+        if (kb < 1024) {
+            return kb.toFixed(2) + ' KB';
+        } else {
+            return (kb / 1024).toFixed(2) + ' MB';
+        }
+    }
+
     return (
         <>
             <link rel="stylesheet" href="/assets/projectTile.css" />
@@ -20,9 +31,8 @@ export default function ProjectTile({ project }) {
                     <p className="project-description">{description}</p>
                     <div className="project-stats">
                         <span>⬇️ {downloads}</span>
-                        <span>⭐ {favorites}</span>
                         <span>📝 {commits}</span>
-                        <span>📦 {size}</span>
+                        <span>📦  {formatBytes(size)} </span>
                     </div>
                 </div>
             </div>

@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import "../../public/assets/styles.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState({});
     const [message, setMessage] = useState("");
+    const navigate = useNavigate();
 
     const validate = () => {
         const newErrors = {};
@@ -33,7 +35,7 @@ export default function Login() {
         if (!validate()) return;
 
         try {
-            const res = await fetch("http://localhost:3000/api/auth/signin", {
+            const res = await fetch("http://localhost:3000/api/auth/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -42,12 +44,15 @@ export default function Login() {
             });
 
             const data = await res.json();
-            console.log("Signup response:", data);
+            //console.log("Signup response:", data);
 
             if (res.ok) {
                 setMessage(data.message || "Login successful!");
+                localStorage.setItem("user", JSON.stringify(data.user));
                 // Optionally store user/token in localStorage for future auth
                 // localStorage.setItem("user", JSON.stringify(data.user));
+
+                navigate("/Home");
             } else {
                 setMessage(data.message || "Login failed.");
             }

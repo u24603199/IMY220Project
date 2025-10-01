@@ -7,6 +7,9 @@ import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Projects from "./pages/Projects";
 import ProjectView from "./pages/ProjectView";
+import Connections from "./pages/Connection"
+import ProfileOther from "./pages/ProfileOther"
+import FriendsPage from "./pages/FriendsPage";
 
 const router = createBrowserRouter([
     {
@@ -26,8 +29,16 @@ const router = createBrowserRouter([
         element: <Home />
     },
     {
-        path: "/Profile/:id?",
+        path: "/Profile",
         element: <Profile />
+    },
+    {
+        path: "/Profile/:id",
+        element: <ProfileOther/>
+    },
+    {
+        path: "/Connections",
+        element: <Connections />
     },
     {
         path: "/Projects",
@@ -36,6 +47,10 @@ const router = createBrowserRouter([
     {
         path: "/Projects/:id",
         element: <ProjectView />
+    },
+    {
+        path: "/friends",
+        element: <FriendsPage />
     }
 ])
 
