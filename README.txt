@@ -9,3 +9,5 @@ docker stop u24603199
 docker rm u24603199
 
 GITHUB: https://github.com/u24603199/IMY220Project/
+
+Connection String: "mongodb+srv://test-user:test-password@imy220.wmeo6pg.mongodb.net/?retryWrites=true&w=majority&appName=IMY220"
